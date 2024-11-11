@@ -62,12 +62,12 @@
   ArmGicLib|ArmPkg/Drivers/ArmGic/ArmGicLib.inf
   ArmGicArchLib|ArmPkg/Library/ArmGicArchLib/ArmGicArchLib.inf
   RegisterFilterLib|MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf
-  
+
   # Compiler Services
   NULL|ArmPkg/Library/CompilerIntrinsicsLib/CompilerIntrinsicsLib.inf
   CompilerIntrinsicsLib|ArmPkg/Library/CompilerIntrinsicsLib/CompilerIntrinsicsLib.inf
   NULL|MdePkg/Library/BaseStackCheckLib/BaseStackCheckLib.inf
-  
+
   # UEFI Platform Services
   AuthVariableLib|MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull.inf
   BaseLib|MdePkg/Library/BaseLib/BaseLib.inf
@@ -166,7 +166,7 @@
   PerformanceLib|MdeModulePkg/Library/DxeCorePerformanceLib/DxeCorePerformanceLib.inf
   ReportStatusCodeLib|MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf
   UefiDecompressLib|MdePkg/Library/BaseUefiDecompressLib/BaseUefiDecompressLib.inf
-  
+
 [LibraryClasses.common.DXE_DRIVER]
   MemoryAllocationLib|MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf
   ReportStatusCodeLib|MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf
@@ -200,6 +200,9 @@
   CapsuleLib|MdeModulePkg/Library/DxeCapsuleLibNull/DxeCapsuleLibNull.inf
   ExtractGuidedSectionLib|MdePkg/Library/DxeExtractGuidedSectionLib/DxeExtractGuidedSectionLib.inf
   VariablePolicyLib|MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe.inf
+  VariableFlashInfoLib|MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib.inf
+  ArmMonitorLib|ArmPkg/Library/ArmMonitorLib/ArmMonitorLib.inf
+  ArmSmcLib|ArmPkg/Library/ArmSmcLib/ArmSmcLib.inf
 
 
 ################################################################################
@@ -306,13 +309,13 @@
 
   # Display
   # Simple FrameBuffer
-  gNintendoSwitchPkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0xdfb80000
+  gNintendoSwitchPkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0xf5a00000
   gNintendoSwitchPkgTokenSpaceGuid.PcdMipiFrameBufferWidth|720
   gNintendoSwitchPkgTokenSpaceGuid.PcdMipiFrameBufferHeight|1280
   gNintendoSwitchPkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32
 
   # TrustZone carveout, 14MB below slot 1 top
-  gNintendoSwitchPkgTokenSpaceGuid.PcdTrustZoneCarveoutSize|0xe00000
+  gNintendoSwitchPkgTokenSpaceGuid.PcdTrustZoneCarveoutSize|0
 
   #
   # Make VariableRuntimeDxe work at emulated non-volatile variable mode.
@@ -341,6 +344,7 @@
     <LibraryClasses>
     NULL|MdeModulePkg/Library/DxeCrc32GuidedSectionExtractLib/DxeCrc32GuidedSectionExtractLib.inf
     NULL|MdeModulePkg/Library/LzmaCustomDecompressLib/LzmaCustomDecompressLib.inf
+    ImagePropertiesRecordLib|MdeModulePkg/Library/ImagePropertiesRecordLib/ImagePropertiesRecordLib.inf
   }
 
   # PCD Database
@@ -350,6 +354,7 @@
   }
 
   # Runtime Services
+  EmbeddedPkg/ResetRuntimeDxe/ResetRuntimeDxe.inf
   MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf
   MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf
   MdeModulePkg/Universal/MonotonicCounterRuntimeDxe/MonotonicCounterRuntimeDxe.inf

@@ -53,7 +53,7 @@ function SetupEnv()
   then
     . $WORKSPACE/BaseTools/BuildEnv
   elif [ -n "$PACKAGES_PATH" ]
-  then 
+  then
     PATH_LIST=$PACKAGES_PATH
     PATH_LIST=${PATH_LIST//:/ }
     for DIR in $PATH_LIST
@@ -90,7 +90,7 @@ function SourceEnv()
 
 function DevelopmentBuild()
 {
-  ./NintendoSwitchPkg/Tools/edk2-build.ps1
+  pwsh -File ./NintendoSwitchPkg/Tools/edk2-build.ps1
 
   if [ ! $? -eq 0 ]; then
       echo "[Builder] Build failed."

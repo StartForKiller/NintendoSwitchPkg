@@ -24,7 +24,13 @@ $availableTargets = @(
 # Check package path.
 if ($null -eq (Test-Path -Path "NintendoSwitchPkg")) {
 	Write-Error -Message "NintendoSwitchPkg is not found."
-	return -2
+	try {
+        git clone https://github.com/StartForKiller/NintendoSwitchPkg.git
+    }
+    catch {
+        Write-Error -Message "Failed to clone NintendoSwitchPkg repository. Please ensure you have the required permissions and internet connectivity."
+        return -2
+    }
 }
 
 # Probe GCC
